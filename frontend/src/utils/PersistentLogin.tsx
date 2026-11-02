@@ -45,7 +45,7 @@ function PersistentLogin() {
               visible={true}
               height="50"
               width="50"
-              color="#ffffff"
+              color="var(--loader-color)"
               ariaLabel="tail-spin-loading"
               radius="1"
               wrapperStyle={{}}

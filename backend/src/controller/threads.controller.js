@@ -9,9 +9,6 @@ export const createNewThread = async (req, res, next) => {
   const { prompt, threadId } = req.body;
   const { id, email } = req.userData;
   if (!prompt || !threadId) {
-    console.log("p", prompt);
-    console.log("t", threadId);
-
     throw new ExpressError(404, "Prompt is required!");
   }
 

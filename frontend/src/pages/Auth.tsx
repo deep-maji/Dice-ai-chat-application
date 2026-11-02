@@ -97,7 +97,7 @@ const Auth: React.FC = () => {
       } catch (error) {
         if (axios.isAxiosError(error)) {
           const data: LoginResponse = error.response?.data;
-          if (error.status === 302 || error.status === 401) {
+          if (error.response?.status === 302 || error.response?.status === 401) {
             return setErrorMsg(data.message);
           }
           else {
@@ -117,7 +117,7 @@ const Auth: React.FC = () => {
         setAuth(data);
 
         if (!data.user.verified) {
-          navigate("/verify");
+          return navigate("/verify");
         }
 
         navigate("/");
@@ -125,11 +125,11 @@ const Auth: React.FC = () => {
       } catch (error) {
         if (axios.isAxiosError(error)) {
           const data: LoginResponse = error.response?.data;
-          if (error.status === 403) {
+          if (error.response?.status === 403) {
             setAuth(data);
             return navigate("/verify");
           }
-          else if (error.status === 404 || error.status === 401) {
+          else if (error.response?.status === 404 || error.response?.status === 401) {
             return setErrorMsg(data.message);
           }
           else {
@@ -253,7 +253,7 @@ const Auth: React.FC = () => {
                       visible={true}
                       height="30"
                       width="30"
-                      color="#ffffff"
+                      color="var(--loader-color)"
                       ariaLabel="tail-spin-loading"
                       radius="1"
                       wrapperStyle={{}}

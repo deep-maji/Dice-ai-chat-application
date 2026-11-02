@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 
-dotenv.config();
+dotenv.config({ path: new URL("../../.env", import.meta.url) });
 
 if (!process.env.DB_URL) {
   throw new Error("DB uri not found!");

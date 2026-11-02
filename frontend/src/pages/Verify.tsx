@@ -85,7 +85,7 @@ export default function Verify() {
       } catch (error) {
         if (axios.isAxiosError(error)) {
           const data = error.response?.data;
-          if (error.status === 400 || error.status === 404) {
+          if (error.response?.status === 400 || error.response?.status === 404) {
             return setErrorMsg(data.message);
           }
           else {
@@ -160,7 +160,7 @@ export default function Verify() {
                     visible={true}
                     height="30"
                     width="30"
-                    color="#ffffff"
+                    color="var(--loader-color)"
                     ariaLabel="tail-spin-loading"
                     radius="1"
                     wrapperStyle={{}}

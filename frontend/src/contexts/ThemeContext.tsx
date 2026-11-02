@@ -15,7 +15,7 @@ export function ThemeProvider({ children }: React.PropsWithChildren) {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
 
     const handle = () => {
-      setTheme(media ? "light" : "dark");
+      setTheme(media.matches ? "dark" : "light");
     }
 
     media.addEventListener("change", handle);
@@ -33,4 +33,3 @@ export function ThemeProvider({ children }: React.PropsWithChildren) {
 }
 
 export default ThemeContext;
-

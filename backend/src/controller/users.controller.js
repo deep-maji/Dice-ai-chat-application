@@ -39,28 +39,45 @@ const register = async (req, res, next) => {
 
   await user.save();
 
-  const otp = genarateOTP();
-  const html = getOptHTML(otp);
+  // const otp = genarateOTP();
+  // const html = getOptHTML(otp);
 
-  const otpHash = crypto.createHash("sha256").update(otp).digest("hex");
-  const expiresAt = new Date(Date.now() + 5 * 60 * 1000); // 5 mins
+  // const otpHash = crypto.createHash("sha256").update(otp).digest("hex");
+  // const expiresAt = new Date(Date.now() + 5 * 60 * 1000); // 5 mins
 
-  await OtpModel.create({
-    email,
-    user: user._id,
-    otpHash,
-    expiresAt
-  })
-
-  await sendEmail(email, "OTP Verification", `Your OTP is ${otp}`, html);
-
-  // const refreshToken = genRefreshToken({ id: user._id, email: user.email });
-
-  // res.cookie("refreshToken", refreshToken, {
-  //   httpOnly: true,
-  //   secure: true,
-  //   maxAge: 7 * 24 * 60 * 60 * 1000, // 7Days
+  // await OtpModel.create({
+  //   email,
+  //   user: user._id,
+  //   otpHash,
+  //   expiresAt
   // })
+
+  // await sendEmail(email, "OTP Verification", `Your OTP is ${otp}`, html);
+
+  const payload = {
+    id: user._id,
+    email: user.email,
+    verified: user.verified
+  };
+  const refreshToken = genRefreshToken(payload);
+  const hashRefreshToken = crypto.createHash("sha256").update(refreshToken).digest("hex");
+
+  await Session.create({
+    user: user._id,
+    refreshTokenHash: hashRefreshToken,
+    ip: req.ip,
+    userAgent: req.headers["user-agent"]
+  });
+
+  const accessToken = genAccessToken(payload);
+
+  res.cookie("refreshToken", refreshToken, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+    path: "/"
+  });
 
   res.status(httpStatus.CREATED).json(
     {
@@ -69,7 +86,8 @@ const register = async (req, res, next) => {
         fullname: user.fullname,
         email: user.email,
         verified: user.verified
-      }
+      },
+      accessToken
     });
 }
 
@@ -131,7 +149,7 @@ const login = async (req, res, next) => {
     const hashRefreshToken = crypto.createHash("sha256").update(refreshToken).digest("hex");
 
 
-    const session = Session.create({
+    await Session.create({
       user: user._id,
       refreshTokenHash: hashRefreshToken,
       ip: req.ip,
@@ -140,17 +158,10 @@ const login = async (req, res, next) => {
 
     const accessToken = genAccessToken(payload);
 
-    // res.cookie("refreshToken", refreshToken, {
-    //   httpOnly: true,
-    //   secure: true,
-    //   maxAge: 7 * 24 * 60 * 60 * 1000, // 7Days,
-    //   sameSite: "none"
-    // })
-
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: true,
-      sameSite: "none",
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
       path: "/"
     });

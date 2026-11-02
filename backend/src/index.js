@@ -10,7 +10,6 @@ import cookieParser from "cookie-parser";
 
 import Users from "./models/users.model.js";
 
-import { modelNames } from "./services/genai.js";
 import emailService from "./services/mail.service.js";
 
 const app = express();

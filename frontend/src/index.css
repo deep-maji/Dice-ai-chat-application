@@ -60,6 +60,7 @@
 
   /* Hover */
   --color-on-hover: #2a2a2a;
+  --loader-color: #ffffff;
 }
 
 
@@ -147,5 +148,6 @@
 
   /* Hover */
   --color-on-hover: #d3d3d3;
+  --loader-color: #1e1f8a;
   /* --color-on-hover: #2a2a2a; */
 }

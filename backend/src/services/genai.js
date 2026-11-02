@@ -10,15 +10,6 @@ const models = {
 
 const MODEL_NAME = models["gemini-2.5-flash"]
 
-// Old without histroy
-// export async function googleGenAiMain({ prompt }) {
-//   const response = await ai.models.generateContent({
-//     model: models["gemma-3-1b-it"],
-//     contents: prompt,
-//   });
-//   return response;
-// }
-
 // With histroy
 export async function googleGenAiMain({ prompt, history }) {
 
@@ -38,8 +29,6 @@ export async function googleGenAiMain({ prompt, history }) {
     message: prompt,
   });
 
-  console.log(response);
-
   return response;
 }
 
@@ -56,19 +45,6 @@ export async function genarateTitleOfTheThread({ contents }) {
     model: MODEL_NAME,
     contents: `Summarize this conversation into a 3-word title: ${contents}`
   })
-  console.log(response.text);
 
   return response;
-}
-
-export async function modelNames(params) {
-  const models = await ai.models.list();
-
-  // for (const element of models.Pager.pageInternal) {
-  //   console.log(element.name);
-  // }
-
-  console.log(models);
-
-
 }
