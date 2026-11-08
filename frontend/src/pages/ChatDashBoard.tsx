@@ -1,34 +1,21 @@
 import { AppSidebar } from "@/components/app-sidebar"
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
-import {
   SidebarInset,
   SidebarProvider,
-  SidebarTrigger,
 } from "@/components/ui/sidebar"
 
 import { creatNewMessage, deleteThread, getAllThreadHistroy, getChatById } from "../apis/Chat.api";
-import { useNavigate, useLocation, useParams, Link } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import type { ChatMessage, ChatsHistroy } from "../types/types";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import { TailSpin } from "react-loader-spinner";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import type { AxiosResponse } from "axios";
 import { logoutUser } from "../apis/Auth";
-import Markdown from 'react-markdown';
 import { v4 as uuidv4 } from "uuid";
-import remarkGfm from 'remark-gfm';
 import axios from "axios";
 import "../styles/Chat.css";
-import ThemeContext from "../contexts/ThemeContext";
+// import ThemeContext from "../contexts/ThemeContext";
 
 
 
@@ -59,15 +46,15 @@ export default function Page() {
   // const [themeSetting, setThemeSettings] = useState<"system" | "dark" | "light">("system");
 
   // ThemeContext
-  const themeContext = useContext(ThemeContext);
+  // const themeContext = useContext(ThemeContext);
 
-  const handleTheme = (themeSettings: "system" | "dark" | "light") => {
-    if (themeSettings === "system") {
-      themeContext?.setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      return;
-    }
-    themeContext?.setTheme(themeSettings);
-  }
+  // const handleTheme = (themeSettings: "system" | "dark" | "light") => {
+  //   if (themeSettings === "system") {
+  //     themeContext?.setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  //     return;
+  //   }
+  //   themeContext?.setTheme(themeSettings);
+  // }
 
   // useEffect and functions
   const handleLogout = async () => {
