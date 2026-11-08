@@ -1,4 +1,4 @@
-import type { RegisterResponse, LoginResponse } from "../types/AuthTypes";
+import type { RegisterResponse, LoginResponse } from "../types/types";
 import React, { useState, useRef, useEffect } from "react";
 import { getRegister, getLogin } from "../apis/Auth";
 import { Link, useNavigate } from "react-router-dom";

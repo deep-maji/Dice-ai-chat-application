@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import type { AuthContextType, AuthState } from "../types/AuthTypes";
+import type { AuthContextType, AuthState } from "../types/types";
 
 
 // Create context

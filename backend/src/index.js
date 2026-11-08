@@ -8,6 +8,9 @@ import usersRoute from "./routes/users.route.js";
 import cros from "cors";
 import cookieParser from "cookie-parser";
 
+import { init } from "@heyputer/puter.js/src/init.cjs";
+const puter = init(process.env.PUTER_API_TOKEN);
+
 import Users from "./models/users.model.js";
 
 import emailService from "./services/mail.service.js";
@@ -38,6 +41,21 @@ app.get("/name", async (req, res) => {
   res.json({ ok: "ok" });
 })
 
+app.get("/puter", async (req, res, next) => {
+  try {
+    const response = await puter.ai.chat(
+      "What color was Napoleon's white horse?"
+    );
+
+    res.json({
+      success: true,
+      response,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 // Handel not matched root
 app.all("/*splat", (req, res, next) => {
   next(new ExpressError(404, "Route not found!"));
@@ -46,7 +64,7 @@ app.all("/*splat", (req, res, next) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
   let { message = "Something wrong in our side", status = 500 } = err;
-  console.log(err); // need to remove in Prod.
+  //console.log(err); // need to remove in Prod.
   res.status(status).json({ status, message: message });
 })
 

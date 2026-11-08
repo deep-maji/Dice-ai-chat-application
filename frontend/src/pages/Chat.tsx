@@ -1,6 +1,6 @@
 import { creatNewMessage, deleteThread, getAllThreadHistroy, getChatById } from "../apis/Chat.api";
 import { useNavigate, useLocation, useParams, Link } from "react-router-dom";
-import type { ChatMessage, ChatsHistroy } from "../types/AuthTypes";
+import type { ChatMessage, ChatsHistroy } from "../types/types";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { TailSpin } from "react-loader-spinner";
 import { useContext, useEffect, useState } from "react";

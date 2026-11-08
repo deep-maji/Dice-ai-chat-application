@@ -57,7 +57,8 @@ const register = async (req, res, next) => {
   const payload = {
     id: user._id,
     email: user.email,
-    verified: user.verified
+    verified: user.verified,
+    fullname: user.fullname
   };
   const refreshToken = genRefreshToken(payload);
   const hashRefreshToken = crypto.createHash("sha256").update(refreshToken).digest("hex");
@@ -141,7 +142,8 @@ const login = async (req, res, next) => {
     const payload = {
       id: user._id,
       email,
-      verified: user.verified
+      verified: user.verified,
+      fullname: user.fullname
     }
 
     const refreshToken = genRefreshToken(payload);
@@ -166,7 +168,7 @@ const login = async (req, res, next) => {
       path: "/"
     });
 
-    return res.status(httpStatus.OK).json({ message: "Loged In!", user: { email, verified: user.verified }, accessToken });
+    return res.status(httpStatus.OK).json({ message: "Loged In!", user: { fullname: user.fullname, email, verified: user.verified }, accessToken });
   }
   else {
     return res.status(httpStatus.UNAUTHORIZED).json({ message: "User not exist or invaild password" });
@@ -194,9 +196,9 @@ const refreshTokenToAccessToken = async (req, res, next) => {
   try {
     const decode = getJWTdecodeData(refreshToken);
 
-    const accessToken = genAccessToken({ id: decode.id, email: decode.email, verified: decode.verified });
+    const accessToken = genAccessToken({ id: decode.id, email: decode.email, verified: decode.verified, fullname: decode.fullname });
 
-    res.status(httpStatus.OK).json({ message: "Token refresh by refresh token", user: { email: decode.email, verified: decode.verified }, accessToken });
+    res.status(httpStatus.OK).json({ message: "Token refresh by refresh token", user: { fullname: decode.fullname, email: decode.email, verified: decode.verified }, accessToken });
   } catch (error) {
     next(new ExpressError(httpStatus.BAD_REQUEST, error.message));
   }

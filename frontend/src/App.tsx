@@ -3,6 +3,7 @@ import PageNotFound from './pages/PageNotFound'
 import Auth from './pages/Auth'
 import Home from './pages/Home'
 import Chat from './pages/Chat'
+import ChatDashBoard from './pages/ChatDashBoard'
 import './App.css'
 import LayOut from './pages/LayOut'
 import ProtectedRoute from './utils/ProtectedRoute'
@@ -32,8 +33,8 @@ const router = createBrowserRouter([
           {
             element: <ProtectedRoute />,
             children: [
-              { path: "c/", element: <Chat /> },
-              { path: "c/:id", element: <Chat /> },
+              { path: "c/", element: <ChatDashBoard /> },
+              { path: "c/:id", element: <ChatDashBoard /> },
             ]
           },
           {
@@ -59,9 +60,6 @@ function App() {
 
   useEffect(() => {
     const htmlTag = window.document.querySelector("[data-theme]");
-
-    console.log(themeContext);
-    
 
     if (themeContext) {
       htmlTag?.setAttribute("data-theme", themeContext?.theme);

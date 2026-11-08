@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { AxiosInstance, AxiosResponse } from "axios";
-import type { LoginUser, RegisterUser, VerifyUser } from "../types/AuthTypes";
+import type { LoginUser, RegisterUser, VerifyUser } from "../types/types";
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 

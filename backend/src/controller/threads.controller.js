@@ -77,3 +77,5 @@ export const deleteThreadById = async (req, res, next) => {
   await Threads.findByIdAndDelete({ userId: id, _id: mongoThreadId });
   res.status(httpStatus.OK).json({ message: "Thread removed successfully.", status: httpStatus.OK });
 }
+
+// export const puterChat = async (req, res, next) => {

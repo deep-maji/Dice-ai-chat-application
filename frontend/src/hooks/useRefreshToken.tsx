@@ -1,4 +1,4 @@
-import type { AuthState } from "../types/AuthTypes";
+import type { AuthState } from "../types/types";
 import type { AxiosResponse } from "axios";
 import { refreshToken } from "../apis/Auth";
 import { useAuth } from "./useAuth";
