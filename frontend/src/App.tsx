@@ -3,6 +3,7 @@ import PageNotFound from './pages/PageNotFound'
 import Auth from './pages/Auth'
 import Home from './pages/Home'
 // import Chat from './pages/Chat'
+// import Test from './pages/test/ChatTest'
 import ChatDashBoard from './pages/ChatDashBoard'
 import './App.css'
 import LayOut from './pages/LayOut'
@@ -51,7 +52,11 @@ const router = createBrowserRouter([
       },
       { path: "*", element: <PageNotFound /> }
     ]
-  }
+  },
+  // {
+  //   path: "/test",
+  //   element: <Test />
+  // }
 ]);
 
 function App() {

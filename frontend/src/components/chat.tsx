@@ -73,7 +73,7 @@ interface ChatProps {
 export function Chat({ threadMessages, isLoading, threadError, title, handleNavigateToNewThread, submitCreatNewThread, handleThreadConSubmit, userMessage, setUserMessage }: ChatProps) {
 
   return (
-    <div className="relative flex w-full h-screen flex-col gap-4 [[data-slot=preview]:has(&)]:bg-background [[data-slot=preview]:has(&)>div]:p-0!">
+    <div className="relative flex w-full h-dvh flex-col gap-4 [[data-slot=preview]:has(&)]:bg-background [[data-slot=preview]:has(&)>div]:p-0!">
       <div className="flex min-h-0 flex-1 flex-col">
 
         {/* Header */}
