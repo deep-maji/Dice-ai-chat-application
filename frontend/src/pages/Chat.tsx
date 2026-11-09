@@ -509,7 +509,7 @@ export default function Chat() {
         <header className="w-full px-5 h-16 flex flex-nowrap justify-between items-center overflow-y-auto">
           <div className="font-manrope tracking-widest text-xl font-bold text-on-background whitespace-nowrap">
             <span id="menu-btn" className="inline md:hidden" onClick={() => setMobileMenuOpen(true)}><i className="fa-solid fa-bars-staggered"></i></span>
-            <span className="ml-2">Ethereal AI</span>
+            <span className="ml-2">Dice AI</span>
           </div>
           <div className="flex items-center gap-8 text-sm font-manrope">
 
@@ -648,7 +648,7 @@ export default function Chat() {
             <p
               className="text-[10px] text-center mt-3 text-on-surface-variant/30 tracking-widest uppercase"
             >
-              Ethereal Intelligence can hallucinate. Cross-reference for critical
+              Dice Intelligence can hallucinate. Cross-reference for critical
               thought.
             </p>
           </div>

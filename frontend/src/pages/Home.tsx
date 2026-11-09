@@ -9,7 +9,7 @@ export default function Home() {
     <div className="bg-surface text-on-surface overflow-x-hidden">
       {/* <!-- Top Navigation Bar --> */}
       <nav className="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl flex justify-between items-center px-8 h-16 font-manrope tracking-tight">
-        <div className="text-xl font-bold tracking-widest text-on-surface">Ethereal AI</div>
+        <div className="text-xl font-bold tracking-widest text-on-surface">Dice AI</div>
         <div className="flex items-center gap-4">
           {
             auth.auth === null ?
@@ -36,7 +36,7 @@ export default function Home() {
               The digital <br /> sanctuary for <span className="text-transparent bg-clip-text bg-linear-to-br from-primary to-tertiary">thought.</span>
             </h1>
             <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-              Ethereal AI transcends simple automation, providing a high-end editorial experience for the next generation of intelligence.
+              Dice AI transcends simple automation, providing a high-end editorial experience for the next generation of intelligence.
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
               <Link to={'/c'}>
@@ -110,7 +110,7 @@ export default function Home() {
                   <div className="w-2 h-2 rounded-full bg-primary-dim"></div>
                   <div className="w-2 h-2 rounded-full bg-tertiary-dim"></div>
                 </div>
-                <div className="text-primary-dim opacity-80">const <span className="text-tertiary">intelligence</span> = new Ethereal();</div>
+                <div className="text-primary-dim opacity-80">const <span className="text-tertiary">intelligence</span> = new Dice();</div>
                 <div className="text-on-surface-variant mt-2">intelligence.initiate</div>
               </div>
             </div>
@@ -140,7 +140,7 @@ export default function Home() {
           <a className="text-[#e6e4ec]/30 hover:text-[#e6e4ec] transition-colors" href="#">API</a>
         </div>
         <div className="text-[#e6e4ec]/30">
-          © 2024 Ethereal Intelligence. Digital Sanctuary.
+          © 2026 Dice Intelligence. Digital Sanctuary.
         </div>
       </footer>
     </div>

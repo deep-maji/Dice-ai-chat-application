@@ -11,7 +11,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { Settings2Icon, FrameIcon, PieChartIcon, MapIcon, BookKey } from "lucide-react"
+import { Settings2Icon, FrameIcon, PieChartIcon, MapIcon, Dices } from "lucide-react"
 
 // This is sample data.
 const data = {
@@ -22,9 +22,9 @@ const data = {
   },
   teams: [
     {
-      name: "Kiri AI",
+      name: "Dices AI",
       logo: (
-        <BookKey />
+        <Dices />
       ),
       plan: "Free",
     },
