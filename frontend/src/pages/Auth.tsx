@@ -171,7 +171,7 @@ const Auth: React.FC = () => {
       {/* Content Wrapper*/}
       <div className="relative z-10 flex flex-col min-h-screen overflow-hidden">
         <header className="flex justify-between text-surface-tint font-headline text-sm uppercase w-full p-8">
-          <Link to="/"><div className="text-lg text-on-background tracking-tight">Etheric AI</div></Link>
+          <Link to="/"><div className="text-lg text-on-background tracking-tight">Dice AI</div></Link>
           <div className="w-2 h-2"></div>
         </header>
 
@@ -274,7 +274,7 @@ const Auth: React.FC = () => {
 
         {/* <!-- Footer (Shared Component Structure) --> */}
         <footer className="text-center bg-transparent text-[#c0c1ff] font-['Inter'] text-[12px] tracking-widest uppercase flex flex-col md:flex-row justify-between items-center w-full px-12 py-10 gap-4 mt-auto">
-          <div className="opacity-80 ">© 2024 Etheric AI. Designed for thought.</div>
+          <div className="opacity-80 ">© 2024 Dice AI. Designed for thought.</div>
           <div className="flex gap-8">
             <a className="text-on-background/30 hover:text-on-background transition-all opacity-80 hover:opacity-100" href="#">Privacy</a>
             <a className="text-on-background/30 hover:text-on-background transition-all opacity-80 hover:opacity-100" href="#">Terms</a>
