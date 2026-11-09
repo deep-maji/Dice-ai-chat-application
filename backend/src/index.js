@@ -23,7 +23,7 @@ app.set("trust proxy", 1);
 app.use(cros({
   origin: [
     "http://localhost:5173",
-    "https://geminigpt-frontend.onrender.com"],
+    "https://dice-ai-chat-application.onrender.com"],
   credentials: true
 }));
 app.use(cookieParser());
